@@ -25,6 +25,35 @@ const resolvers={
           const id = parent.favouriteMovies // it contain ids
           return movieList.filter(v => id?.includes(v.id))
        }
+    },
+
+    Mutation: {
+        createUser: (parent, args)=>{
+            const id = userList.length + 1;
+            const newUser = {id, ...args.input}
+            userList.push(newUser)
+            return userList;
+        },
+        updateUser: (parent,args)=>{
+            const userId = args.userId;
+            const updateData = args.input;
+            let user = userList.find(v => v.id === userId);
+            if (!user) {
+                throw new Error('User not found');
+            }
+
+            user.name = updateData?.name || user.name;
+            user.email = updateData?.email || user.email;
+            user.nationality = updateData?.nationality || user.nationality;
+
+            return userList
+        },
+        deleteUser: (parent, args)=>{
+            const id = args.userId
+            const index = userList.findIndex(v=>v.id === Number(id))
+            userList.splice(index, 1)
+            return userList
+        }
     }
 }
 module.exports = resolvers

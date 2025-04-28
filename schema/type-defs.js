@@ -30,6 +30,25 @@ const typeDefs = `
     Year: Int!
     isInTheatre: Boolean!
   }
+  
+  type CreateUser{
+    id: ID
+    name: String!
+    email: String!
+    nationality: Nationality
+  }
+  
+  input CreateUserInput{
+    name: String!
+    email: String!
+    nationality: Nationality = IN
+  }
+  
+  type Mutation{
+    createUser(input: CreateUserInput): [CreateUser]
+    updateUser(userId: ID!, input: CreateUserInput): [CreateUser]
+    deleteUser(userId: ID!): [CreateUser]
+  }
 
   enum Nationality {
     IN,
