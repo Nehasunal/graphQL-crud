@@ -1,0 +1,70 @@
+query getAllUsers {
+  users{
+    id
+    email
+    friends{
+      id
+      name
+    }
+  }
+}
+
+# query getSingleUser($userid: ID!){
+#   user(id:$userid){
+#     id
+#     email
+#     friends{
+#       id
+#       name
+#     }
+#   }
+# }
+
+# query getAllMovies{
+#   movies{
+#     id
+#     Title
+#     isInTheatre
+#   }
+# }
+# query getMovie($title: String!){
+#   movie(title: $title){
+#     id
+#     Title
+#     isInTheatre
+#   }
+# }
+
+# query favouriteMovies{
+#   users{
+#     name
+#     favouriteMovies {
+#       id
+#       Title
+#     }
+#   }
+# }
+
+# mutation CreateUser($createUserInput:CreateUserInput){
+#   createUser(input: $createUserInput) {
+#     name
+#     email
+#     nationality
+#   }
+# }
+
+# mutation UpdateUser($userId: ID!, $updateInput: CreateUserInput){
+#   updateUser(userId: $userId, input: $updateInput) {
+#     id
+#     name
+#     email
+#   }
+# }
+
+mutation DeleteUser($userId: ID!){
+  deleteUser(userId: $userId){
+    id
+    name
+    email
+  }
+}
